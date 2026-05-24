@@ -4,6 +4,8 @@
   --text: #181716;
   --muted: #6d6861;
   --line: #e7e0d8;
+  /* Body: Times New Roman (system). Headings: --font-heading from next/font in layout.tsx */
+  --font-body: "Times New Roman", Times, "Liberation Serif", serif;
 }
 
 * {
@@ -14,11 +16,26 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--font-body);
 }
 
 a {
   color: inherit;
+}
+
+/* Headings + display type: Bricolage Grotesque (loaded via next/font → --font-heading) */
+.brand,
+.post-link h2,
+.article h1,
+.article-subtitle,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: var(--font-heading), "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
 }
 
 .site {
@@ -35,9 +52,7 @@ a {
 }
 
 .brand {
-  font-family: ui-sans-serif, system-ui, sans-serif;
   font-size: 14px;
-  font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
@@ -68,8 +83,9 @@ a {
 
 .post-meta {
   color: var(--muted);
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
+  font-style: italic;
 }
 
 .article h1 {
@@ -81,13 +97,29 @@ a {
 .article-subtitle {
   color: var(--muted);
   font-size: 22px;
+  font-weight: 500;
   line-height: 1.35;
   margin: 0 0 36px;
 }
 
+/* Article body: Times New Roman */
 .prose {
+  font-family: var(--font-body);
   font-size: 20px;
   line-height: 1.72;
+}
+
+.prose p,
+.prose li,
+.prose blockquote,
+.prose figcaption {
+  font-family: var(--font-body);
+}
+
+.prose strong,
+.prose em,
+.prose a {
+  font-family: inherit;
 }
 
 .prose img {
@@ -122,6 +154,8 @@ button {
   border-radius: 999px;
   color: var(--bg);
   cursor: pointer;
-  font: 700 14px ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-heading), "Bricolage Grotesque", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
   padding: 10px 16px;
 }
