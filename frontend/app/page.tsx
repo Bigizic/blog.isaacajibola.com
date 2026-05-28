@@ -13,6 +13,13 @@ export default async function HomePage() {
           {posts.map((post) => (
             <li key={post.slug}>
               <Link className="post-link" href={`/${post.slug}`}>
+                {post.coverImageUrl ? (
+                  <img
+                    src={post.coverImageUrl}
+                    alt=""
+                    className="post-cover"
+                  />
+                ) : null}
                 <h2>{post.title}</h2>
                 {post.publishedAt ? (
                   <p className="post-meta">

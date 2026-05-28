@@ -4,8 +4,28 @@
   --text: #181716;
   --muted: #6d6861;
   --line: #e7e0d8;
+  --toggle-bg: #fbfaf7;
+  --toggle-active-bg: #181716;
+  --toggle-active-fg: #fbfaf7;
+  --toggle-fg: #6d6861;
+  --prose-link: #1c4ad8;
+  --prose-code-bg: #f0ede2;
   /* Body: Times New Roman (system). Headings: --font-heading from next/font in layout.tsx */
   --font-body: "Times New Roman", Times, "Liberation Serif", serif;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #121110;
+  --text: #f5f3ef;
+  --muted: #a39e96;
+  --line: #2e2a26;
+  --toggle-bg: #1a1816;
+  --toggle-active-bg: #f5f3ef;
+  --toggle-active-fg: #121110;
+  --toggle-fg: #a39e96;
+  --prose-link: #7ba3ff;
+  --prose-code-bg: #2a2724;
 }
 
 * {
@@ -45,10 +65,47 @@ a {
 }
 
 .site-header {
+  align-items: center;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
+  justify-content: space-between;
   margin-bottom: 56px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--toggle-bg);
+  font-family: var(--font-heading), "Bricolage Grotesque", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.theme-toggle .theme-toggle-btn {
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--toggle-fg);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 6px 10px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.theme-toggle .theme-toggle-btn:hover {
+  color: var(--text);
+}
+
+.theme-toggle .theme-toggle-btn.is-active {
+  background: var(--toggle-active-bg);
+  color: var(--toggle-active-fg);
 }
 
 .brand {
@@ -75,6 +132,16 @@ a {
   text-decoration: none;
 }
 
+.post-cover {
+  border-radius: 18px;
+  display: block;
+  height: auto;
+  margin-bottom: 16px;
+  max-height: 280px;
+  object-fit: cover;
+  width: 100%;
+}
+
 .post-link h2 {
   font-size: clamp(28px, 6vw, 46px);
   line-height: 1;
@@ -86,6 +153,16 @@ a {
   font-family: var(--font-body);
   font-size: 13px;
   font-style: italic;
+}
+
+.article-cover {
+  border-radius: 18px;
+  display: block;
+  height: auto;
+  margin: 0 0 28px;
+  max-height: 420px;
+  object-fit: cover;
+  width: 100%;
 }
 
 .article h1 {
@@ -120,6 +197,17 @@ a {
 .prose em,
 .prose a {
   font-family: inherit;
+}
+
+.prose a {
+  color: var(--prose-link);
+}
+
+.prose code {
+  background: var(--prose-code-bg);
+  border-radius: 3px;
+  font-size: 0.92em;
+  padding: 0 0.25em;
 }
 
 .prose img {

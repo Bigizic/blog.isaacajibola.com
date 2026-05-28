@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Link from "next/link";
 import { Bricolage_Grotesque } from "next/font/google";
+import { SiteHeader } from "@/components/SiteHeader";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -18,16 +20,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={bricolage.variable}>
+    <html lang="en" className={bricolage.variable} suppressHydrationWarning>
       <body>
-        <main className="site">
-          <header className="site-header">
-            <Link className="brand" href="/">
-              Isaac Ajibola
-            </Link>
-          </header>
-          {children}
-        </main>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <ThemeProvider>
+          <main className="site">
+            <SiteHeader />
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
